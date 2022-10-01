@@ -1,4 +1,4 @@
-# Ineraktive Programme
+# Interaktive Programme
 
 <nav>
   <ul>
