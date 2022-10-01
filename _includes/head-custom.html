@@ -6,10 +6,18 @@
       `https://api.github.com/repos/${user}/${repo}/contents/`
     );
     const data = await response.json();
+
+    const navEl = document.querySelector("nav");
     const ulEl = document.createElement("ul");
+    navEl.appendChild(ulEl);
 
     for (const file of data) {
+      if (file.name.startsWith("_")) {
+        continue;
+      }
+
       if (
+        file.type === "dir" ||
         (file.name.endsWith(".md") &&
           file.name !== "README.md" &&
           file.name !== "LICENSE.md") ||
@@ -24,6 +32,6 @@
       }
     }
 
-    document.body.prepend(ulEl);
+    document.body.prepend(navEl);
   })();
 </script>
