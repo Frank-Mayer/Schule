@@ -1,0 +1,66 @@
+<head>
+  <script defer>
+    (async () => {
+      const user = location.host.split(".")[0];
+      const path = location.pathname.split("/").filter(Boolean);
+      const repo = path.shift();
+      const response = await fetch(
+        `https://api.github.com/repos/${user}/${repo}/contents/${path.join(
+          "/"
+        )}`,
+        {
+          cache: "reload",
+        }
+      );
+      const data = await response.json();
+
+      const navEl = document.createElement("nav");
+      const ulEl = document.createElement("ul");
+      navEl.appendChild(ulEl);
+
+      let foundSomething = false;
+
+      for (const file of data) {
+        if (file.name.startsWith("_")) {
+          continue;
+        }
+
+        if (
+          file.type === "dir" ||
+          (file.name.endsWith(".md") &&
+            file.name !== "README.md" &&
+            file.name !== "LICENSE.md") ||
+          file.name.endsWith(".html")
+        ) {
+          const liEl = document.createElement("li");
+          const aEl = document.createElement("a");
+          aEl.href = file.name.replace(/\.md$/, ".html");
+          aEl.textContent = file.name;
+          liEl.appendChild(aEl);
+          ulEl.appendChild(liEl);
+
+          foundSomething = true;
+        }
+      }
+
+      if (foundSomething) {
+        document.body.prepend(navEl);
+      }
+    })();
+  </script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "all" } } });
+  </script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+    type="text/javascript"
+  ></script>
+</head>
