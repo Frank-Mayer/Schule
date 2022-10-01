@@ -51,7 +51,7 @@ Für solche Zwecke werden besonders schnelle Hash Funktionen wie [xxhash](https:
 Wir suchen nach `Lea`
 
 ```js
-xxhash("Lea") = 2914FFAC
+xxhash("Lea") = "2914FFAC"
 ```
 
 Wir wissen also, dass der gesuchte Eintrag an der Position mit dem Schlüssel 2914FFAC ist.
