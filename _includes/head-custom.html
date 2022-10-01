@@ -4,7 +4,10 @@
     const path = location.pathname.split("/").filter(Boolean);
     const repo = path.shift();
     const response = await fetch(
-      `https://api.github.com/repos/${user}/${repo}/contents/${path.join("/")}`
+      `https://api.github.com/repos/${user}/${repo}/contents/${path.join("/")}`,
+      {
+        cache: "reload",
+      }
     );
     const data = await response.json();
 
@@ -26,7 +29,7 @@
       ) {
         const liEl = document.createElement("li");
         const aEl = document.createElement("a");
-        aEl.href = file.path;
+        aEl.href = file.name;
         aEl.textContent = file.name;
         liEl.appendChild(aEl);
         ulEl.appendChild(liEl);
