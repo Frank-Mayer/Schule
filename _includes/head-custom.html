@@ -13,17 +13,22 @@
     );
     const data = await response.json();
 
-    const navEl = document.createElement("nav");
+    let navEl = document.querySelector("nav");
+    if (!navEl) {
+      navEl = document.createElement("nav");
+      document.body.prepend(navEl);
+    }
+
     const ulEl = document.createElement("ul");
     navEl.appendChild(ulEl);
 
     let foundSomething = false;
 
     data.sort((a, b) => {
-      if (a.name === "index.html") {
+      if (a.name === "index.md") {
         return -1;
       }
-      if (b.name === "index.html") {
+      if (b.name === "index.md") {
         return 1;
       }
       return a.name.localeCompare(b.name);
@@ -54,10 +59,6 @@
 
         foundSomething = true;
       }
-    }
-
-    if (foundSomething) {
-      document.body.prepend(navEl);
     }
   })();
 </script>
