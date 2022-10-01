@@ -1,7 +1,9 @@
 <script defer>
   (async () => {
     const user = location.host.split(".")[0];
-    const path = location.pathname.split("/").filter(Boolean);
+    const path = location.pathname
+      .split("/")
+      .filter((x) => x && !x.endsWith(".html"));
     const repo = path.shift();
     const response = await fetch(
       `https://api.github.com/repos/${user}/${repo}/contents/${path.join("/")}`,
@@ -16,6 +18,16 @@
     navEl.appendChild(ulEl);
 
     let foundSomething = false;
+
+    data.sort(a, (b) => {
+      if (a.name === "index.html") {
+        return -1;
+      }
+      if (b.name === "index.html") {
+        return 1;
+      }
+      return a.name.localeCompare(b.name);
+    });
 
     for (const file of data) {
       if (file.name.startsWith("_")) {
@@ -32,7 +44,11 @@
         const liEl = document.createElement("li");
         const aEl = document.createElement("a");
         aEl.href = file.name.replace(/\.md$/, ".html");
-        aEl.textContent = file.name;
+        if (file.name === "index.md" || file.name === "index.html") {
+          aEl.textContent = "/";
+        } else {
+          aEl.textContent = file.name;
+        }
         liEl.appendChild(aEl);
         ulEl.appendChild(liEl);
 
