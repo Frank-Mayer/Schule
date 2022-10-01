@@ -61,4 +61,4 @@ Hierbei muss man aber bedenken, dass eine Hash Funktion eine eigene Komplexität
 
 ## Komplexitätsdiagramm
 
-![](https://frank-mayer.github.io/Schule/Interaktive%20Programme/big-o-complexity-chart.svg)
+![](https://frank-mayer.github.io/Schule/Interaktive-Programme/big-o-complexity-chart.svg)
