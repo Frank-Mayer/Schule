@@ -1,5 +1,3 @@
-<nav>
-  <ul>
-    <li><a href="Interaktive-Programme">Interaktive Programme</a></li>
-  </ul>
-</nav>
+- [Computer Networks](Computer-Networks)
+- [Grundlagen des Software Engineering](GSE1)
+- [Interaktive Programme](Interaktive-Programme)
