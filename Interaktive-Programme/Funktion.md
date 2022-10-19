@@ -25,7 +25,7 @@ class KlasseA {
 	    return text;
 	  }
 
-	  return text.charAt(text.length() - 1) + PalindromGenerator.invert(text.substring(0, text.length() - 1));  
+	  return text.charAt(text.length() - 1) + invert(text.substring(0, text.length() - 1));  
 	}
 }
 ```
