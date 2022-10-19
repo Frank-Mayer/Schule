@@ -15,3 +15,11 @@ Die Side Effects von Methoden können dazu führen, dass der Zustand von Membern
 ## Funktional
 
 Anstelle von Klassen verwendet man oft (nicht ausschließen) Module. In einem Modul befinden sich Variablen und Funktionen. Funktionen dürfen keine Side Effects haben. Variablen sind immer `immutable` (es gibt wenige Ausnahmen).
+
+### Vorteile
+
+Der state von allen Speichern ist immer sichergestellt.
+
+### Nachteile
+
+Nicht jeder Algorithmus und nicht jedes Projekt kann vollständig Funktional implementiert werden.
