@@ -1,1 +1,3 @@
 # Computer Networks
+
+- [Übertragungsgeschwindigkeit](übertragungsgeschwindigkeit)
