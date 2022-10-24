@@ -14,7 +14,7 @@ Mit `continue` springt man zum nächsten Schleifendurchlauf.
 
 ## Labele
 
-Normalerweise spricht ein Keyword die direkt überliegende Schleife an.Normalerweise spricht ein Keyword die direkt überliegende Schleife an. Mit einem Label kann man eine bestimmte Schleife ansprächen.
+Normalerweise spricht ein Keyword die direkt überliegende Schleife an. Normalerweise spricht ein Keyword die direkt überliegende Schleife an. Mit einem Label kann man eine bestimmte Schleife ansprächen.
 
 ```java
 a:
