@@ -6,3 +6,4 @@
 - [Funktion](Funktion)
 - [Variablen](Variablen)
 - [Paradigmen](Paradigmen)
+- [garbage-collector](Garbage Collector)
