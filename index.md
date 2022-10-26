@@ -1,4 +1,5 @@
 - [Computer Networks](Computer-Networks)
 - [Design Thinking](Design-Thinking)
+- [Grundlagen der Informatik](GDI)
 - [Grundlagen des Software Engineering](GSE1)
 - [Interaktive Programme](Interaktive-Programme)
