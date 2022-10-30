@@ -4,16 +4,6 @@ Eine Funktion ist eine festgelegte Prozedur.
 
 Diese Prozedur kann Parameter entgegennehmen, Statements ausführen und Werte zurückgeben.
 
-## Lambda Expression
-
-Eine Funktion kann in eine Variable gespeichert werden, auch Lambda Expression genannt. So kann eine Funktion an eine andere Funktion als Parameter übergeben werden. Das nennt man dann higher order function.
-
-```java
-Consumer<Integer> action = (Integer i) -> {  
-  System.out.println(i);  
-};
-```
-
 ## Methode
 
 Wenn eine Funktion Teil einer Klasse ist, nennt man das Methode.
@@ -29,6 +19,30 @@ class KlasseA {
 	}
 }
 ```
+
+## Lambda
+
+Eine Funktion kann in eine Variable gespeichert werden, auch Lambda genannt. 
+So kann eine Funktion an eine andere Funktion als Parameter übergeben werden. Genauso kann eine Funktion eine andere Funktion zurückgeben. Das nennt man dann higher order function.
+
+```java
+@FunctionalInterface
+public interface AnimalSound {
+  String sound();
+}
+
+public class Cat {
+  public AnimalSound lambdaFunction = () -> {
+    return "Meow";
+  }
+}
+
+public class Dog {
+  public AnimalSound lambdaExpression = () -> "Wuff";
+}
+```
+
+Mehr zu Lambdas: [Lambda Expressions in Java - Full Simple Tutorial](https://youtu.be/tj5sLSFjVj4) by [Coding with John](https://www.youtube.com/c/CodingwithJohn)
 
 ## Parameter
 
