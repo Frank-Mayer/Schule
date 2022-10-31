@@ -5,7 +5,7 @@
 - [Klasse](Klasse)
 - [Modifikatoren](Modifikatoren)
 - [Funktion](Funktion)
-- [Variablen](Variablen)
+- [Variablen und Typen](Variablen)
 - [Boolean](boolean)
 - [Paradigmen](Paradigmen)
 - [garbage-collector](Garbage Collector)

@@ -1,4 +1,4 @@
-# Variablen
+# Variablen und Typen
 
 Eine Variable ist ein Speicher.
 
@@ -22,6 +22,12 @@ int variable = 42;
 | `float`      | Kommazahl     | $3,40282347 \cdot 10^{38}$ bis $1,40239846 \cdot 10^{-45}$                     | 32 Bit    |
 | `doable`     | Kommazahl     | $1,79769313486231570 \cdot 10^{308}$ bis $4,94065645841246544 \cdot 10^{-324}$ | 64 Bit    |
 | `BigDecimal` | Kommazahl     | $-2^{Integer.MAX\_VALUE}$ bis $2^{Integer.MAX\_VALUE}-1$                       | 16 Bit    |
+
+### Wahl des Datentyps
+
+Bei Desktop Computern ist es sinnlos einen kleineren Datentyp (wie `int`) zu verwenden, um Speicherplatz zu sparen, da ein 64-Bit-Prozessor Zahlen zu 64 Bit umwandelt, um schneller rechnen zu können.
+
+`BigInteger` und `BigDecimal` sind von davon ausgenommen, da hier anders gespeichert wird.
 
 ## Generics
 
