@@ -6,5 +6,6 @@
 - [Modifikatoren](Modifikatoren)
 - [Funktion](Funktion)
 - [Variablen](Variablen)
+- [Boolean](boolean)
 - [Paradigmen](Paradigmen)
 - [garbage-collector](Garbage Collector)
