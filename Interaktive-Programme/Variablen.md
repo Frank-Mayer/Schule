@@ -8,6 +8,8 @@ In Java muss der Typ eines Speichers festgelegt werden.
 int variable = 42;
 ```
 
+Der Name einer Variable darf nicht länger als 65535 Zeichen lang sein.
+
 ## Typen
 
 | Keyword      | Beschreibung  | Wertebereich                                                                   | Bit Größe |
