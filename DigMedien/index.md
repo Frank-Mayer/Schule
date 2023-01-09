@@ -1,4 +1,4 @@
-# Paradigmen
+# Digitale Medien
 
 - [Aufgabe 2](aufgabe-2)
 - [Aufgabe 3](aufgabe-3)
