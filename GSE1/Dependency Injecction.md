@@ -70,7 +70,7 @@ You could then switch to another implementation like a `ConsoleLogger` without c
 classDiagram
 
 class Logger{
-	+log(text: string)
+	log(text: string)
 }
 
 class FileLogger {
@@ -78,14 +78,28 @@ class FileLogger {
 	+FileLogger(file: File)
 	+log(text: string)
 }
+Logger <|.. FileLogger : implements
+
+class RemoteFileLogger {
+	-sshSession: SshSession
+	-fileStream: SshFileStream
+	+RemoteFileLogger(sshSession: SshSession, path: string)
+	+log(text: string)
+}
+FileLogger <|-- RemoteFileLogger : extends
 
 class ConsoleLogger {
 	+ConsoleLogger()
 	+log(text: string)
 }
-
-Logger <|.. FileLogger : implements
 Logger <|.. ConsoleLogger : implements
+
+class ScreenLogger {
+	-screenId: integer
+	+ScreenLogger(screenId: integer)
+	+log(text: string)
+}
+ConsoleLogger <|-- ScreenLogger : extends
 ```
 
 This also follows the Liskov Substitution and Dependency Inversion principles because it doesn't matter which implementation of the interface is used. It kind of forces you to provide the needed methods and fields in the interface. You could even use a child class of the `ConsoleLogger` that writes to another console using something like [screen](https://wiki.ubuntuusers.de/Screen). The dependent class only calls the `log` method to log a message, it doesn't care how this logging is done.
