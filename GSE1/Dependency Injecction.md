@@ -16,11 +16,11 @@ Some DI libraries provide more, but the main types are:
 
 #### Singleton
 
-A new Service is created only once during the DI container's lifetime, and used everywhere.
+A new service is created only once during the DI container's lifetime and used everywhere.
 
 #### Transient
 
-The DI container creates a new instance of the service, every time it is requested.
+The DI container creates a new instance of the service every time it is requested.
 
 #### Scoped
 
@@ -54,15 +54,15 @@ startKoin {
 }
 ```
 
-## Why though?
+## What problem does it solve?
 
 You might have a class called `HttpHandler` that handles HTTP requests. It would be a good idea to use a logger to track any requests or errors in that class. You could just create a new instance of something like a `FileLogger` and pass the file where you want it to store the logs.
 
-But there is one question: **Why does the `HttpHandler` has to know where to store its log files? A class should only have one responsibility. Handling log files is definitely not the responsibility of a `HttpHandler`!**
+But there is one question: **Why does the `HttpHandler` have to know where to store its log files? A class should only have one responsibility. Handling log files is definitely not the responsibility of a `HttpHandler`!**
 
-You would rather request a `FileLogger` instance from the DI container. Then there is no logic inside the `HttpHandler` on how to create this logger.
+You would rather request a `FileLogger` instance from the DI container. That means there is no logic inside the `HttpHandler` on how to create this logger.
 
-You could even go one step further and create an interface `Logger` which is implemented by the `FileLogger` class. If you request an instance of the `Logger` interface, the DI container will provide an instance of a class implementing this interface. In our case, this would be `FileLogger`.
+You could even go one step further and create an interface `Logger` which is implemented by the `FileLogger` class. If you request an instance of the `Logger` interface, the DI container will provide an instance of a class implementing this interface. In our case this would be `FileLogger`.
 
 You could then switch to another implementation like a `ConsoleLogger` without changing any code that uses a logger. This works because the `HttpHandler` relies on the abstraction (interface) and not on any specific implementation.
 
@@ -80,35 +80,20 @@ class FileLogger {
 }
 Logger <|.. FileLogger : implements
 
-class RemoteFileLogger {
-	-sshSession: SshSession
-	-fileStream: SshFileStream
-	+RemoteFileLogger(sshSession: SshSession, path: string)
-	+log(text: string)
-}
-FileLogger <|-- RemoteFileLogger : extends
-
 class ConsoleLogger {
 	+ConsoleLogger()
 	+log(text: string)
 }
 Logger <|.. ConsoleLogger : implements
-
-class ScreenLogger {
-	-screenId: integer
-	+ScreenLogger(screenId: integer)
-	+log(text: string)
-}
-ConsoleLogger <|-- ScreenLogger : extends
 ```
 
-This also follows the Liskov Substitution and Dependency Inversion principles because it doesn't matter which implementation of the interface is used. It kind of forces you to provide the needed methods and fields in the interface. You could even use a child class of the `ConsoleLogger` that writes to another console using something like [screen](https://wiki.ubuntuusers.de/Screen). The dependent class only calls the `log` method to log a message, it doesn't care how this logging is done.
+This also follows the [Liskov Substitution](https://en.wikipedia.org/wiki/Liskov_substitution_principle) and [Dependency Inversion](https://en.wikipedia.org/wiki/Dependency_inversion_principle) principles because it doesn't matter which implementation of the interface is used. It kind of forces you to provide the needed methods and fields in the interface. You could even use a child class of the `ConsoleLogger` that writes to another console using something like [screen](https://wiki.ubuntuusers.de/Screen). The dependent class only calls the `log` method to log a message, it doesn't care how this logging is done.
 
 ## Where is this used?
 
-The architectural pattern MVVM needs DI if there is communication between multiple viewmodels and models which are not directly related. This scenario occurs in 99% of every MVVM application. Because they need to be able to communicate in order to make it one whole app instead of multiple unrelated screens.
+The architectural pattern MVVM needs DI if there is communication between multiple viewmodels and models which are not directly related. This scenario occurs in 99% of every MVVM application, because they need to be able to know each other in order to exchange data.
 
-Those popular frameworks provide a build in DI solution:
+These popular frameworks provide a built-in DI solution:
 - [ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection)
 - [Xamarin](https://learn.microsoft.com/en-us/xamarin/xamarin-forms/enterprise-application-patterns/dependency-injection)
 - [MAUI](https://learn.microsoft.com/en-us/dotnet/architecture/maui/dependency-injection)
