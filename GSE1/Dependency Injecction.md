@@ -94,8 +94,15 @@ This also follows the Liskov Substitution and Dependency Inversion principles be
 
 The architectural pattern MVVM needs DI if there is communication between multiple viewmodels and models which are not directly related. This scenario occurs in 99% of every MVVM application. Because they need to be able to communicate in order to make it one whole app instead of multiple unrelated screens.
 
-Those popular MVVM frameworks provide a build in DI solution:
+Those popular frameworks provide a build in DI solution:
 - [ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection)
 - [Xamarin](https://learn.microsoft.com/en-us/xamarin/xamarin-forms/enterprise-application-patterns/dependency-injection)
 - [MAUI](https://learn.microsoft.com/en-us/dotnet/architecture/maui/dependency-injection)
 - [Angular](https://angular.io/guide/dependency-injection)
+
+Other DI libraries you could use:
+- [Koin](https://insert-koin.io) (Kotlin)
+- [Dagger](https://dagger.dev) (Kotlin)
+- [Google Fruit](https://github.com/google/fruit) (C++)
+- [Spring](https://docs.spring.io/spring-boot/docs/2.0.x/reference/html/using-boot-spring-beans-and-dependency-injection.html) (Java)
+- [Unity](https://github.com/unitycontainer) (C#)
