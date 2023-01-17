@@ -1,4 +1,4 @@
-## What Dependency Injection?
+## What is Dependency Injection?
 
 Dependency Injection (consequently referred to as DI) is a design pattern used in object-oriented programming as a form of inversion of control. It allows dependencies to be provided without the dependent class having to know how to create them.
 
