@@ -4,3 +4,4 @@
 - [Grundlagen des Software Engineering](GSE1)
 - [Interaktive Programme](Interaktive-Programme)
 - [Digitale Medien](DigMedien)
+- [Signalverarbeitung](SV)
